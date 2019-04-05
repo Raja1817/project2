@@ -1,19 +1,18 @@
 import socket
 import ujson
-
 s=socket.socket()
 print("socket created")
-port= 1200
+port= 3000
 s.bind(('',port) )
-print("socket binded to 1200")
+print("socket binded to the port 3000")
 s.listen()
-
 while True:
-    c, addr =s.accept()
+    c, addr =s1.accept()
     print("got connection from {}".format(addr))
     data =ujson.loads(c.recv(1024).decode('utf-8'))
     print("received {}".format(data))
     c.send(ujson.dumps('12').encode('utf-8'))
+    print("gitserver")
     c.close()
 
 
